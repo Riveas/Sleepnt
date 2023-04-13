@@ -3,6 +3,7 @@ import math
 import mediapipe as mp
 import time
 from playsound import playsound
+from pygame import mixer
 
 
 
@@ -22,6 +23,7 @@ if __name__ == '__main__':
 
     drawing_spec = mp_drawing.DrawingSpec(thickness=1, circle_radius=1)
     cap = cv2.VideoCapture(0)
+
 
     with mp_face_mesh.FaceMesh(
             max_num_faces=1,
@@ -61,12 +63,12 @@ if __name__ == '__main__':
             dist3 = distance(rightEye[0][1], rightEye[2][1])
             dist4 = distance(rightEye[1][1], rightEye[3][1])
 
-            if dist1 and dist2 < 1:
+            if dist1 and dist2 < 1.5:
                 leftEyeState = 'closed'
             else:
                 leftEyeState = 'opened'
 
-            if dist3 and dist4 < 1:
+            if dist3 and dist4 < 1.5:
                 rightEyeState = 'closed'
             else:
                 rightEyeState = 'opened'
@@ -80,11 +82,15 @@ if __name__ == '__main__':
                 t2 = time.time()
                 break
 
-            time = t2-t1
-            print(time)
+            czas = t2-t1
+            print(czas)
+
+            mixer.init()
+            sound = mixer.Sound('alarm.wav')
 
             while(czas > 2):
-                playsound(r'C:/Users/Maciek/Desktop/Sleepnt/alarm.mp3')
+                #playsound(r'C:/Users/Maciek/Desktop/Sleepnt/alarm.mp3')
+                sound.play()
                 break
 
             cv2.imshow('MediaPipe Face Mesh', cv2.flip(image, 1))
