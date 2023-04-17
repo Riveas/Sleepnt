@@ -10,4 +10,7 @@ With this project every time you'll start snoozing, you'll be reminded with soun
 * Time
 ## Installation guide:
 To ensure that your project will work fine first you'll need to install necessary modules. You can do it simply by running following commands in your terminal:
-pip install opencv-python __ pip install mediapipe __ pip install pygame
+pip install opencv-python  
+pip install mediapipe  
+pip install pygame  
+
