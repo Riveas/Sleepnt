@@ -67,3 +67,51 @@ Once you have your y variable extracted you can calculate euclidean distance:
             dist3 = distance(rightEye[0][1], rightEye[2][1])
             dist4 = distance(rightEye[1][1], rightEye[3][1])
 ```
+Now that you have calculated distances between points we can add variables that'll store state of your eye:
+```
+            if dist1 and dist2 < 1.5:
+                leftEyeState = 'closed'
+            else:
+                leftEyeState = 'opened'
+
+            if dist3 and dist4 < 1.5:
+                rightEyeState = 'closed'
+            else:
+                rightEyeState = 'opened'
+```
+1.5 which is threshold value between closed and opened eye was set with trial and error method so it may vary for different people.  
+Next step in your app would be to calculate how long your eyes are closed. You can do that by using time module:
+```
+            while(leftEyeState == 'opened' and rightEyeState == 'opened'):
+                t1 = time.time()
+                t2 = 0
+                break
+
+            while(leftEyeState == 'closed' and rightEyeState == 'closed'):
+                t2 = time.time()
+                break
+            czas = t2 - t1
+```
+Second to last step is to initialize pygame method called mixer which'll allow you to play alarm:
+```
+            mixer.init()
+            sound = mixer.Sound('alarm.wav')
+```
+Last step of your project is to play your alarm when eyes are being closed for too long. In my case i chose value of 1.5 seconds:
+```
+            while(czas > 1.5):
+                sound.play()
+                break
+```
+What you can also do is display your opencv view and print in console state of your eyes:
+```
+            cv2.imshow('MediaPipe Face Mesh', cv2.flip(image, 1))
+
+            print(f'Left eye is {leftEyeState}, Right eye is {rightEyeState}')
+```
+Once you have everything above setup, you have to add last commands that'll tell opencv when to close your app:
+```
+            if cv2.waitKey(5) & 0xFF == 27:
+                break
+    cap.release()
+```
