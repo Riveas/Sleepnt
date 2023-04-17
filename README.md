@@ -37,5 +37,12 @@ Next you'll want to start your webcam and process image by mediapipe model
 What you get as a result of processing your image is list containing 468 landmarks, each having their x,y and z position in image.
 For analysing your eye you'll need 8 landmarks seen as below:  
 ![eyes](https://user-images.githubusercontent.com/130605144/232501991-340835ef-d372-483a-ba7f-44d2cdd64f48.png)  
-Points indices: P1 = 385, P2 = 387, P3 = 380, P4 = 373, P5 = 160, P6 = 158, P7 = 144, P8 = 153
-
+Points indices: P1 = 385, P2 = 387, P3 = 380, P4 = 373, P5 = 160, P6 = 158, P7 = 144, P8 = 153  
+To detect whether eyes are opened or closed you can calculate the distance between top and bottom pair of points. To do so you can simply calculate euclidean distance: 
+```
+    def distance(p1, p2):
+        x1 = p1
+        x2 = p2
+        dist = math.sqrt((x1 - x2)**2)
+        return dist
+```
