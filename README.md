@@ -46,3 +46,24 @@ To detect whether eyes are opened or closed you can calculate the distance betwe
         dist = math.sqrt((x1 - x2)**2)
         return dist
 ```
+Next step in your project is extracting x and y values from results list:
+```
+            leftEye = [[results.multi_face_landmarks[0].landmark[385].x * imgW, results.multi_face_landmarks[0].landmark[385].y * imgH],
+                       [results.multi_face_landmarks[0].landmark[387].x * imgW, results.multi_face_landmarks[0].landmark[387].y * imgH],
+                       [results.multi_face_landmarks[0].landmark[380].x * imgW, results.multi_face_landmarks[0].landmark[380].y * imgH],
+                       [results.multi_face_landmarks[0].landmark[373].x * imgW, results.multi_face_landmarks[0].landmark[373].y * imgH]]
+
+            rightEye = [[results.multi_face_landmarks[0].landmark[160].x * imgW, results.multi_face_landmarks[0].landmark[160].y * imgH],
+                       [results.multi_face_landmarks[0].landmark[158].x * imgW, results.multi_face_landmarks[0].landmark[158].y * imgH],
+                       [results.multi_face_landmarks[0].landmark[144].x * imgW, results.multi_face_landmarks[0].landmark[144].y * imgH],
+                       [results.multi_face_landmarks[0].landmark[153].x * imgW, results.multi_face_landmarks[0].landmark[153].y * imgH],
+```
+To detect whether eye is opened or not you'll only need the y variable but for debugging purpose x variable was also extracted.  
+Once you have your y variable extracted you can calculate euclidean distance:
+```
+            dist1 = distance(leftEye[0][1], leftEye[2][1])
+            dist2 = distance(leftEye[1][1], leftEye[3][1])
+
+            dist3 = distance(rightEye[0][1], rightEye[2][1])
+            dist4 = distance(rightEye[1][1], rightEye[3][1])
+```
