@@ -36,5 +36,6 @@ Next you'll want to start your webcam and process image by mediapipe model
 ```
 What you get as a result of processing your image is list containing 468 landmarks, each having their x,y and z position in image.
 For analysing your eye you'll need 8 landmarks seen as below:  
-![eyes](https://user-images.githubusercontent.com/130605144/232501991-340835ef-d372-483a-ba7f-44d2cdd64f48.png)
+![eyes](https://user-images.githubusercontent.com/130605144/232501991-340835ef-d372-483a-ba7f-44d2cdd64f48.png)  
+Points indices: P1 = 385, P2 = 387, P3 = 380, P4 = 373, P5 = 160, P6 = 158, P7 = 144, P8 = 153
 
