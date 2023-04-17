@@ -10,7 +10,13 @@ With this project every time you'll start snoozing, you'll be reminded with soun
 * Time
 ## Installation guide:
 To ensure that your project will work fine first you'll need to install necessary modules. You can do it simply by running following commands in your terminal:
-* pip install opencv-python  
-* pip install mediapipe  
-* pip install pygame  
+pip install opencv-python  
+pip install mediapipe  
+pip install pygame  
+## Setup
+First thing to do is initiating opencv and mediapipe facial recognition model
+```
+    mp_face_mesh = mp.solutions.face_mesh
 
+    cap = cv2.VideoCapture(0)
+```
