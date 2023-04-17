@@ -20,3 +20,19 @@ First thing to do is initiating opencv and mediapipe facial recognition model
 
     cap = cv2.VideoCapture(0)
 ```
+Then you'll need to setup your model
+```
+    with mp_face_mesh.FaceMesh(
+            max_num_faces=1,
+            refine_landmarks=True,
+            min_detection_confidence=0.5,
+            min_tracking_confidence=0.5) as face_mesh:
+```
+Next you'll want to start your webcam and process image by mediapipe model
+```
+        while cap.isOpened():
+            success, image = cap.read()
+            results = face_mesh.process(image)
+```
+What you get as a result of processing your image is list containing 468 landmarks, each having their x,y and z position in image.
+For analysing your eye you'll need 8 landmarks seen as below:
