@@ -36,3 +36,4 @@ Next you'll want to start your webcam and process image by mediapipe model
 ```
 What you get as a result of processing your image is list containing 468 landmarks, each having their x,y and z position in image.
 For analysing your eye you'll need 8 landmarks seen as below:
+![Alt text](C:\Users\Maciek\Desktop\Sleepnt\eyes.png)
